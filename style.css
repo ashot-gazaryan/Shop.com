@@ -47,3 +47,10 @@ header nav a{
     margin-top: 10px;
     cursor: pointer;
 }
+
+main{
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    flex-wrap: wrap;
+}

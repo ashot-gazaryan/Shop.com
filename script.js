@@ -1,5 +1,5 @@
 const key = 'AIzaSyC0rHPdF_ZU-A0EjBj6GMlJGGv7dOLRMQ0'
-let listName = 'Дмитрий'
+let listName = 'ashot'
 const sheetId = '1Xd6Vt39JaOKj50kvqk5qSiVMH-zSxRSY47qOvLsGTYg'
 
 let url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${listName}?key=${key}`
@@ -12,7 +12,9 @@ async function GetData(){
     // console.log(json);
     let convertedData =  CovertToObject(json.values)
     console.log(convertedData);
-    CreateCard(convertedData[0])
+    convertedData.forEach(function(product){
+        CreateCard(product)
+    })
 }
 
 GetData()
@@ -33,9 +35,9 @@ function CovertToObject(jsonData){
 
 function CreateCard(product){
     let card = `<div class="card">
-    <img src="${product.изображение}" alt="">
-    <h1>${product.название}</h1>
-    <p>${product.описание}</p>
+    <img src="${product.изображения}" alt="">
+    <h1>${product.названия}</h1>
+    <p>${product.описания}</p>
     <p> <span>${product.цена}</span> рублей</p>
     <button>Добавить в корзину</button>
 </div>`
